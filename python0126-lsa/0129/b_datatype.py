@@ -46,7 +46,7 @@ print(bool('안녕하세요')) # True
 # : 문자, 단어 등으로 구성된 문자들의 집합
 # : 작은따옴표(')나 큰따옴표(")로 쌍으로 묶어 표현
 str_data = "hello"
-str_data = 'python'
-
-
-
+str_data = 'python' # shift + tab: 역방향 탭
+# >> str() 함수: 다른 데이터 타입을 문자열로 변환
+print(str(100)) # 문자열 "100"
+print(str(True)) # 문자열 'True'
