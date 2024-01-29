@@ -66,3 +66,40 @@ print(f'다음 숫자는 {number + 1}입니다.')
 # : 소수점 자리를 포맷
 number = 3.14159
 print(f'소수점 두 자리: {number:.2f}')
+
+# 2. 입력
+# input() 함수를 사용하여 사용자로부터 입력을 받음.
+# input() 함수를 실행하는 경우 프로그램은 사용자의 입력을
+# , 문자열로 인식하여 읽어들임.
+
+# 사용방법
+# input의 소괄호 내에 따옴표로 입력에 대한 메시지를 출력
+# input('이름을 입력해주세요.')
+user_input = input('이름을 입력해주세요.')
+# 영문자가 아닌 한글을 입력하는 경우 인식이 느림
+print(user_input)
+
+user_input = input('키를 입력해주세요') # "169.2
+# int(), float() 등을 사용하여 해당 데이터로 변환
+height = float(user_input)
+print(height)
+
+# 사용자로부터 두 개의 실수를 입력받아
+# , 그 합계를 계산하는 프로그램 구현
+
+# 첫 번재 실수 입력받기
+number1 = float(input('첫 번째 실수를 입력하세요: '))
+# 두 번째 실수 입력받기
+number2 = float(input('두 번째 실수를 입력하세요: '))
+
+# 두 실수 합계 계산
+sum = number1 + number2
+
+# 결과 출력 f-strings을 사용하여 출력
+print(f'두 실수 의 함계는 {sum}입니다.') # 5.7
+
+# 거스름돈 계산: 금액은 정수로 표현
+# 사용자로부터 구매 금액 입력 purchase_amount
+# 사용자로부터 지불 금액 입력 payment_amount
+
+# 거스름돈을 계산 (구매 금액 - 지불 금액) change
