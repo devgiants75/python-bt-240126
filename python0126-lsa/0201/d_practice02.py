@@ -25,3 +25,16 @@ else:
 # 형 변환
 # int(): 정수로 변환
 # float(): 실수로 변환
+
+ratingInput = input('영화 평점을 입력해주세요.')
+rating = float(ratingInput)
+
+if rating >= 4.0:
+    print('Excellent')
+# elif rating >= 2.0 and rating < 4.0:
+elif 2.0 <= rating < 4.0:
+    print('SoSo')
+elif rating <= 1.9:
+    print('Bad')
+else:
+    print('올바른 평점 범위를 입력해주세요.')
