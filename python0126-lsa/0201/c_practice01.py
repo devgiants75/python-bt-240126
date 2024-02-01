@@ -55,4 +55,26 @@ for i in range(1, 11):
 # 4. 3을 입력: 게임시작
 # 5. 0을 입력: 게임종료 - break
 
+while True:
+    print('로그인: 1, 회원가입: 2, 게임시작: 3, 게임종료: 0')
+    userInput = input('숫자를 입력해주세요.')
 
+    # 숫자가 아닌 경우
+    if not userInput.isdigit():
+        print('숫자만 입력해주세요.')
+        continue
+
+    # 숫자를 입력한 경우
+    numberInput = int(userInput)
+
+    if numberInput == 1:
+        print('로그인')
+    elif numberInput == 2:
+        print('회원가입')
+    elif numberInput == 3:
+        print('게임시작')
+    elif numberInput == 0:
+        print('게임종료')
+        break
+    else:
+        print('알 수 없는 명령입니다. 다시 입력해주세요')
