@@ -65,3 +65,22 @@ while True:
         print('숫자만 입력해주세요')
         continue
     print(f'입력하신 숫자는 {userInput}입니다.')
+
+#! 중첩 for문
+# : 하나의 for문 안에 다른 for문이 포함되어 있는 구조
+
+for i in range(3):
+    for j in range(2):
+        print(i, j)
+
+# 2차원 배열의 모든 요소 출력
+# : 2차원 배열(리스트 내의 리스트)
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+for row in matrix:
+    for number in row:
+        print(number)
