@@ -65,6 +65,7 @@ for i in range(1, 6):
     print(f'{i}번째 시도: 숫자를 입력하세요')
     guess = int(input())
 
+    print(f"시도 {i}: 숫자를 입력하세요. (비밀 숫자: {secret_number})")
     if guess < secret_number:
         print('정답보다 낮습니다.')
     elif guess > secret_number:
