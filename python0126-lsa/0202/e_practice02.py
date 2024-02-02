@@ -52,3 +52,27 @@ while True:
 #    , 컴퓨터는 사용자의 입력이 정답보다
 #    , 높은지, 낮은지, 정답인지 알려줌
 # 4. 사용자가 정답을 맞추거나 또는 기회를 모두 소진할 경우 게임종료
+
+# random.randint(a, b)
+# : a와 b 사이의 임의의 정수를 반환 (a, b를 모두 포함)
+
+secret_number = random.randint(1, 20)
+
+print('1부터 20사이의 숫자를 맞춰보세요! (기회 5번)')
+
+# 사용자에게 5번의 기회를 제공
+for i in range(1, 6):
+    print(f'{i}번째 시도: 숫자를 입력하세요')
+    guess = int(input())
+
+    if guess < secret_number:
+        print('정답보다 낮습니다.')
+    elif guess > secret_number:
+        print('정답보다 높습니다.')
+    else: # 정답과 동일
+        break
+
+if guess == secret_number:
+    print(f'축하합니다. {i}번 시도에 숫자를 맞추셨습니다.')
+else:
+    print(f'기회를 모두 소진하셨습니다. 정답은 {secret_number}입니다.')
