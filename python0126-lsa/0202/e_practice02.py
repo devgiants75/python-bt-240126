@@ -18,3 +18,28 @@ import random
 #   : 오류 메시지 출력 후 다시 조건 검사
 # > options 내의 데이터가 입력된 경우 random의 선택과 비교하여
 #   : 결과 반환
+
+options = ['가위', '바위', '보']
+
+while True:
+    print('가위, 바위, 보 게임 시작!')
+    print('"종료"를 입력하면 게임이 종료됩니다.')
+    user_choice = input('가위, 바위, 보 중 하나를 선택하세요.')
+
+    if user_choice == '종료':
+        print('게임을 종료합니다.')
+        break
+
+    if user_choice not in options:
+        print('잘못된 입력입니다. 가위, 바위, 보 중 하나를 입력하세요.')
+        continue
+
+    computer_choice = random.choice(options)
+    print(f'컴퓨터의 선택 : {computer_choice}')
+
+    if user_choice == computer_choice:
+        print('무승부입니다.')
+    elif (user_choice == '가위' and computer_choice == '보') or (user_choice == '바위' and computer_choice == '가위') or (user_choice == '보' and computer_choice == '바위'):
+        print('사용자의 승리입니다.')
+    else:
+        print('컴퓨터의 승리입니다.')
