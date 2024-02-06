@@ -16,3 +16,11 @@ def print_args(*args):
 
 print_args('Hello', '안녕', '니하오', '오하이오')
 print_args(1, 2, 3, 4, 5)
+
+# 가변인자를 받아 평균을 반환하는 함수를 작성
+# sum(), len() 내장 함수 사용
+# 1, 2, 3, 4, 5
+def average(*numbers):
+    return sum(numbers) / len(numbers)
+
+print(average(1, 2, 3, 4, 5)) # 3.0
