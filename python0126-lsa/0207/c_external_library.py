@@ -55,3 +55,36 @@ print(arr3)
 # >> 엑셀에서 사용하는 함수식 사용이 가능
 print(np.mean(arr)) # 넘파이 배열의 평균값 - 3.0
 print(np.sum(arr2)) # 넘파이 배열의 총합 - 21
+
+### 파이썬 외부 모듈 - pandas ###
+# : Python Data Analysis Library의 약자
+# : 파이썬에서 데이터 분석을 위해 사용되는 라이브러리
+
+#! 파이참을 사용한 외부 라이브러리 설치
+# 1. 왼쪽 상단의 햄버거 메뉴바 > File > Settings (ctrl + alt + s)
+# 2. Project <프로젝트이름>
+# : Python Interpreter를 선택
+# : 현재 프로젝트에 설정된 Python 인터프리터와 설치된 패키지 목록 확인
+
+# 3. 화면 왼쪽 상단의 + 버튼 클릭
+# : 패키지 설치 화면 확인 > 검색 바에서 패키지 검색 후
+# : 왼쪽 하단의 패키지 설치 버튼 클릭
+
+# pandas DataFrame 생성
+# : 여러 개의 컬럼으로 구성된 2차원의 데이터 구조 (표)
+
+import pandas as pd
+
+# DataFrame 생성
+df = pd.DataFrame({
+    'A': [1, 2, 3],
+    'B': ['a', 'b', 'c']
+})
+
+# 데이터 엑세스: 특정 데이터에 접근
+# column 접근 (세로)
+print(df['A']) # A의 값을 인덱스 번호로 나누어서 출력
+
+# row 접근 (가로)
+# DataFrame명.loc[인덱스번호]: 해당 인덱스 번호의 데이터를 출력
+print(df.loc[1])
