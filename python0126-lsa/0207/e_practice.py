@@ -16,3 +16,5 @@ for line in line_list: # 33번 반복(33개의 줄)
         if word == '꿀':
             count += 1
 print(f'꿀은 전체 {count}번 나타납니다.')
+
+#### 외부 파일 사용 방법 강의 ####
