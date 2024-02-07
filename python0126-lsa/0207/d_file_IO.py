@@ -43,5 +43,84 @@
 # rt: 텍스트 파일 읽기 모드
 # ab: 바이너리 파일 추가 모드
 
+#! 파일 닫기
+# : close() 함수 사용
+# 파일객체.close()
 
+file = open('new_file.txt', 'wt') # 새 파일 생성
+file.close()
+
+#! with문
+# : 파일을 열고 작업을 마친 후 자동으로 파일을 닫아주는 기능
+# : close()함수를 따로 사용하지 않아도 가능
+
+# with open('파일명', '모드) as file객체명:
+#   파일 처리 코드
+
+with open('my_file.txt', 'wt') as file:
+    print('my_file.txt 파일이 생성되었습니다.')
+
+### 파이썬 파일 출력 ###
+
+# 1. (텍스트 파일) 생성
+file = open('file_output.txt', 'wt')
+# write()함수를 사용하여 파일에 내용을 작성
+file.write('Hello, this is a sample text file')
+file.close()
+
+# 2. (텍스트 파일) 내용 추가하기
+file = open('file_output.txt', 'a')
+file.write('\n') # \n: 줄바꿈
+file.write('This is additional text!')
+file.close()
+
+### 파일 입력(input) ###
+# r(read, 읽기)모드를 사용하여 파일 열기
+# read() 함수 사용
+
+# 인코딩
+# : 문자나 기호들을 컴퓨터에 저장하거나 전송할 수 있는 형태로 변환하는 과정
+# : 즉, 0과 1(이진 데이터)로 변환하는 규칙
+# : UTF-8(유니코드 인코딩 방식) 사용을 권장
+# >> open함수에 encoding='' 속성을 추가
+
+file = open('my_file.txt', 'a')
+file.write('Hello')
+file.close()
+
+# utf-8 지정 시 글자 작성은 영어로 작성
+file = open('my_file.txt', 'r', encoding='utf-8')
+content = file.read()
+print(content)
+file.close()
+
+# 파일의 여러 줄을 읽어오는 경우 readline()함수를 사용
+# : 각 줄 마다 반복해야 함 >> while반복문
+
+file = open('my_file.txt', 'a')
+file.write('\n')
+file.write('nice to meet you')
+file.close()
+
+file = open('my_file.txt', 'r', encoding='utf-8')
+while True:
+    line = file.readline()
+    if not line: break
+    print(line)
+file.close()
+
+with open('my_file.txt', 'rt') as file:
+    content = file.read()
+    print(content)
+
+print('--모든 줄을 리스트로 읽기--')
+# 모든 줄을 리스트로 읽기
+# : readlines() 함수: 파일의 각 줄을 요소로 하는 리스트를 반환
+file = open('my_file.txt', 'r', encoding='utf-8')
+lines = file.readlines() # lines: 리스트
+for line in lines:
+    print(line)
+file.close()
+
+print(lines)
 
