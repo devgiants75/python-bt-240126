@@ -32,4 +32,12 @@ with open(filename, newline='', encoding='utf-8') as file:
         if int(row[1]) >= 30:
             print(','.join(row))
 
+#! csv 파일에 새로운 데이터 추가
+new_data = ['이주헌', '33', '양산']
+with open(filename, 'a', newline='', encoding='utf-8') as file:
+    writer = csv.writer(file)
+    writer.writerow(new_data)
+
+print('새로운 데이터가 추가되었습니다.')
+
 
