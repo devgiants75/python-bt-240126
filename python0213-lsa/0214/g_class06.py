@@ -22,3 +22,22 @@ class Character:
 
     def remove_from_game(self):
         print(f'{self.name}이(가) 게임에서 사라졌습니다.')
+
+# Character 클래스를 사용한 객체 생성
+Naymar = Character('Naymar', 300, 50)
+Son = Character('Son', 400, 150)
+
+# 객체의 메서드의 인자로 또 다른 객체를 전달 가능
+Son.attack(Naymar)
+print(f'네이마르의 남은 체력은 {Naymar.hp}입니다')
+
+Naymar.attack(Son)
+print(f'손흥민의 남은 체력은 {Son.hp}입니다.')
+
+Son.attack(Naymar)
+print(f'네이마르의 남은 체력은 {Naymar.hp}입니다')
+
+# 캐릭터의 체력이 0이 되는 경우 제거
+if Naymar.hp <= 0:
+    Naymar.remove_from_game()
+    del Naymar
