@@ -20,3 +20,28 @@
 # 3. 모듈화
 # : 특정 기능의 집합을 부모 클래스에서 정의
 # : 여러 자식 클래스를 정의하여 모듈화된 설계 가능
+
+#! 상속 관계 구현
+# : '~은 ~이다'의 관계가 성립해야만 상속 가능
+# ex) Car는 Vehicle이다. (자동차는 운송수단이다.)
+#     SamsungNotebook은 Computer이다. (삼성노트북은 컴퓨터이다.)
+# - Rameon은 LeeSeungAh이다. (라면은 이승아이다.)
+
+#! 상속 예제
+
+# 부모 클래스 구현
+class ParentClass:
+    def parent(self):
+        print('이 메서드는 부모 클래스에서 정의되었습니다.')
+
+# 자식 클래스 구현
+# : 소괄호 안에 어떤 부모 클래스를 상속받는지 명시
+# : class 클래스명(부모클래스):
+class ChildClass(ParentClass):
+    pass # 특별한 기능 동작을 하지 않을 때 작성
+
+parent = ParentClass()
+child = ChildClass()
+
+parent.parent()
+child.parent() # 부모 클래스의 속성과 기능을 상속받음
