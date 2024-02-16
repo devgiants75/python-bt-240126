@@ -76,5 +76,3 @@ try:
     print('비밀번호가 성공적으로 설정되었습니다.')
 except PasswordError as e:
     print(e)
-
-
