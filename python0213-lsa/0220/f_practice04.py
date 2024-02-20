@@ -18,8 +18,10 @@ def fetch_movie_data(start):
     html = response.content
     soup = BeautifulSoup(html, 'html.parser')
 
-    movie_containers = soup.select('.ipc-poster-card ipc-poster-card--baseAlt ipc-poster-card--dynamic-width topten-title ipc-sub-grid-item ipc-sub-grid-item--span-2')
+    movie_containers = soup.select('.ipc-poster-card ipc-poster-card--baseAlt ipc-poster-card--dynamic-width top-picks-title ipc-sub-grid-item ipc-sub-grid-item--span-2')
     for movie in movie_containers:
         image = movie.div.a
         title = movie.a.span
         print(f'{image} {title}')
+
+fetch_movie_data(0)
