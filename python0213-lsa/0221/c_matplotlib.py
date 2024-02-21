@@ -32,3 +32,7 @@ axes4 = figure.add_subplot(2, 2, 4) # 2행 2열 4번째 subplot
 
 # 그래프를 출력
 plt.show()
+
+# 여러 개의 subplot을 동시에 생성: subplots()함수를 사용
+axes = plt.subplots(nrows=3, ncols=3)
+plt.show()
