@@ -5,23 +5,28 @@
 import requests
 from bs4 import BeautifulSoup
 
-Movie_URL='https://www.imdb.com/'
-headers= {
-'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
+# 영화 목록 페이지의 실제 URL로 변경
+Movie_URL = 'https://www.imdb.com/path/to/movie/list'
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
 }
 
+
 # 영화 데이터 수집 함수
-def fetch_movie_data(start):
-    url=Movie_URL.format(start)
-    response = requests.get(url, headers=headers)
-    # HTML 내용에 대한 구문을 분석 (내용만 추출)
+def fetch_movie_data():
+    response = requests.get(Movie_URL, headers=headers)
     html = response.content
     soup = BeautifulSoup(html, 'html.parser')
 
-    movie_containers = soup.select('.ipc-poster-card ipc-poster-card--baseAlt ipc-poster-card--dynamic-width top-picks-title ipc-sub-grid-item ipc-sub-grid-item--span-2')
-    for movie in movie_containers:
-        image = movie.div.a
-        title = movie.a.span
-        print(f'{image} {title}')
+    # 영화 컨테이너 선택자를 확인하고 수정
+    movie_containers = soup.find_all('div', class_='your-correct-class-here')
 
-fetch_movie_data(0)
+    for movie in movie_containers:
+        # 이미지와 제목을 추출하는 올바른 방법으로 변경
+        image = movie.find('img')['src']
+        title = movie.find('a')['title']
+        print(f'Image URL: {image}, Title: {title}')
+
+
+fetch_movie_data()
