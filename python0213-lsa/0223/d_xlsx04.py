@@ -14,10 +14,7 @@ df = pd.read_excel('aaaa.xlsx')
 df.loc[1, 'City'] = '대전'
 
 # 셀 내용 삽입
-df.loc[5] = ['추가윤', '양산']
-
-# 변경 사항을 엑셀 파일로 저장
-df.to_excel('aaaa.xlsx', index=False)
+df.loc[5] = ['추가윤', '양산', 30]
 
 # 반복문을 사용하여 셀 정보에 접근
 # : 모든 행의 'Name'열에 접근
@@ -26,8 +23,6 @@ for index, row in df.iterrows():
 
 # 특정 열 추가
 df['Age'] = [28, 27, 26, 28, 35, 29]
-
-df.to_excel('aaaa.xlsx', index=False)
 
 # 특정 열 삭제
 # drop('삭제하고자하는 열의 이름')
