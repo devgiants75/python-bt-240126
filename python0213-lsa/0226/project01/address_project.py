@@ -13,7 +13,7 @@ class Person:
 
     # info(): 추가로 저장된 정보를 출력하는 메서드
     def info(self):
-        print(f'${self.name}, ${self.phone}, ${self.address}')
+        print(f'{self.name}, {self.phone}, {self.address}')
 
 #! AddressBook 클래스 생성
 # : 주소록 프로젝트의 모든 기능을 구현하는 클래스
@@ -35,15 +35,10 @@ class AddressBook:
         except: # csv 파일이 없을 때
             print('addressBook 파일이 없습니다.')
         else: # csv 파일이 있을 때
-            while True:
-                buffer = file.readline() # csv 파일을 한 줄씩 읽어오기
-                if not buffer:
-                    break
-                # split 메서드를 사용하여 이름, 전화번호, 주소를 분리
-                name = buffer.split(',')[0]
-                phone = buffer.split(',')[1]
-                address = buffer.split(',')[2].rstrip('\n')
-                self.address_list.append(Person(name, phone, address))
+            for buffer in file:
+                if buffer.strip():  # 공백 라인 건너뛰기
+                    name, phone, address = buffer.strip().split(',')
+                    self.address_list.append(Person(name, phone, address))
             print('addressBook.csv 파일을 로드했습니다.')
             file.close()
 
@@ -56,7 +51,8 @@ class AddressBook:
             print('addressBook.csv 파일을 생성할 수 없습니다.')
         else:
             for person in self.address_list:
-                file.write(f'{person.name}, {person.phone}, {person.address}')
+                file.write(f'{person.name},{person.phone},{person.address}\n')
+            file.close()
 
     # 수행 메뉴 소개 및 입력
     # : 프로그램의 동작을 안내하는 출력문으로 구성
@@ -125,17 +121,18 @@ class AddressBook:
         # enumerate: 파이썬 내장 함수
         # - 순회가능한 iterable의 각 원소와 그 원소의 인덱스를 튜플로 묶어서 반환
         for i, person in enumerate(self.address_list):
-            if name == self.address_list[i].name:
-                print(f'검색된 전화번호가 {self.address_list[i].phone}입니다.')
-                if input('삭제할까요? (Y/N) : '.upper()) != 'Y':
+            if name == person.name:
+                print(f'검색된 전화번호가 {person.phone}입니다.')
+                # 사용자의 입력을 받은 후 대문자로 변환
+                if input('삭제할까요? (Y/N) : ').upper() != 'Y':
                     continue # for문으로 되돌아가 다음 사람을 검색
-                self.address_list.pop(i) # 삭제
+                del self.address_list[i]  # 해당 인덱스의 요소를 삭제
                 deleted = True
                 print(f'{name}의 정보를 삭제했습니다.')
                 self.file_generator()
                 break
-            if not deleted:
-                print(f'{name}의 정보가 삭제되지 않았습니다.')
+        if not deleted:
+            print(f'{name}의 정보가 삭제되지 않았습니다.')
 
     # update()
     # : 사용자로부터 수정할 사용자 정보를 입력받아서
@@ -149,23 +146,26 @@ class AddressBook:
         updated = False
         for i, person in enumerate(self.address_list):
             if name == self.address_list[i].name:
-                print('검색된 전화번호가 "{}"입니다.'.format(self.address_list[i].phone))
-                if input('수정할까요? (Y/N) : '.upper != 'Y'):
-                    continue # for문으로 돌아가서 다음 사람을 검색
+                if name == person.name:
+                    print(f'검색된 전화번호가 "{person.phone}"입니다.')
+                    # 수정 여부를 묻는 메시지를 먼저 출력하고, 대문자로 변환된 입력을 받음
+                    confirm = input('수정할까요? (Y/N) : ').upper()
+                    if confirm != 'Y':
+                        continue  # 사용자가 'Y'가 아니면 다음 사람을 검색
 
-                new_phone = input('변경할 전화번호 입력 : ')
-                if new_phone: # 입력이 있는 경우
-                    self.address_list[i].phone = new_phone # 입력된 내용으로 변경
+                    new_phone = input('변경할 전화번호 입력 : ')
+                    if new_phone:  # 입력이 있는 경우
+                        person.phone = new_phone  # 입력된 내용으로 변경
 
-                new_address = input('변경할 주소 입력 : ')
-                if new_address:
-                    self.address_list[i].address = new_address
+                    new_address = input('변경할 주소 입력 : ')
+                    if new_address:
+                        person.address = new_address
 
-                updated = True
-                print('주소록이 수정되었습니다. 수정된 주소록의 내용을 확인하세요.')
-                self.address_list[i].info()
-                self.file_generator()
-                break
+                    updated = True
+                    print('주소록이 수정되었습니다. 수정된 주소록의 내용을 확인하세요.')
+                    person.info()  # 수정된 정보 출력
+                    self.file_generator()  # 파일 업데이트
+                    break
         if not updated:
             print('{}의 정보가 수정되지 않았습니다.'.format(name))
 
