@@ -44,7 +44,7 @@ programmings = {
 # 파일 탐색기 > c드라이브 > Windows 폴더 > Fonts 폴더
 # : 사용하고자 하는 폰트 우클릭 > 속성
 # : 위치정보\폰트명.확장자
-# C:\Windows\Fonts\COOPBL.TTF
+# C:\Windows\Fonts\H2PORM.TTF
 #
 wc = wordcloud.WordCloud(font_path='C:\\Windows\\Fonts\\H2PORM.TTF')
 cloud = wc.generate_from_frequencies(programmings)
