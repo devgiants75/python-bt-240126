@@ -82,9 +82,9 @@ class WeatherVisualization:
             # 해당 도시의 날씨 데이터에서 날짜 정보를 추출
             dates = [row[1] for row in city_data]
             # 해당 도시의 날씨 데이터에서 최고 기온 정보를 추출(숫자로 변환)
-            max_temps = [float(row[3] for row in city_data)]
+            max_temps = [float(row[2]) for row in city_data]
             # 해당 도시의 날씨 데이터에서 최저 기온 정보를 추출(숫자로 변환)
-            min_temps = [float(row[4] for row in city_data)]
+            min_temps = [float(row[3]) for row in city_data]
 
             # 해당 도시의 날짜와 최고 & 최저 기온을 사용하여 선 그래프를 생성
             plt.plot(dates, max_temps, label=f'{city} Max Temp')
@@ -109,7 +109,7 @@ def main():
     # 무한 루프를 통해 사용자로부터 계속해서 명령을 받기
     while True:
         print('Enter command')
-        command = input('create/read/update/delete/visualize/exit')
+        command = input('create/read/update/delete/visualize/exit : ')
 
         if command == 'create':
             # 'create'명령을 받으면, 새로운 날씨 데이터를 생성
